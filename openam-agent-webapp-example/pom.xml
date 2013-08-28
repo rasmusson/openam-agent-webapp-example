@@ -13,9 +13,7 @@
 			<version>6.0</version>
 			<scope>provided</scope>
 		</dependency>
-
-            
-	</dependencies>
+  </dependencies>
 	<build>
 		<finalName>openam-agent-webapp-example</finalName>
 		<plugins>
