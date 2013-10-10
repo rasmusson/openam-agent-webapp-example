@@ -1,4 +1,5 @@
 openam-agent-webapp-example
 ===========================
 
-An web app that prints all the data from request headers, session mm where an openAM agent can put attribute data
+An web app that prints all the data from request headers, and request attributes, session.
+This is where an ApenAM agent can put attribute data.
