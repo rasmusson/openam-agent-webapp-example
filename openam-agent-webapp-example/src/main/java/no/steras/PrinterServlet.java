@@ -16,6 +16,10 @@ public class PrinterServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
+		req.setAttribute("test att", "test att");
+		req.getSession().setAttribute("test sess", "test sess");
+		
+		
 		Writer w = resp.getWriter();
 		resp.setContentType("text/html");
 		w.append("<html>" + "<head></head>" + "<body>");
@@ -39,6 +43,18 @@ public class PrinterServlet extends HttpServlet {
 			w.append("Version: " + cookie.getVersion());
 			w.append("<br>");
 			w.append("Secure: " + cookie.getSecure());
+			w.append("<br>");
+		}
+		w.append("<br>");
+		
+		// Print all session attriutes
+		w.append("<b>Session attributes</b>");
+
+		for (String attributeName : Collections.list(req.getSession().getAttributeNames())) {
+			w.append("<br>");
+			w.append("Name: " + attributeName);
+			w.append("<br>");
+			w.append("Value: " + req.getSession().getAttribute(attributeName));
 			w.append("<br>");
 		}
 		w.append("<br>");
