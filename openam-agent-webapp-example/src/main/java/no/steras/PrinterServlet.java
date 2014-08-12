@@ -1,5 +1,7 @@
 package no.steras;
 
+import java.lang.String;
+import java.lang.System;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.Collections;
@@ -16,14 +18,14 @@ public class PrinterServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("test att", "test att");
-		req.getSession().setAttribute("test sess", "test sess");
-		
 		
 		Writer w = resp.getWriter();
 		resp.setContentType("text/html");
 		w.append("<html>" + "<head></head>" + "<body>");
-
+		
+		String appName = System.getenv("APP_NAME") != null ? System.getenv("APP_NAME") : "Test Application";
+		w.append("<h1>" + appName + "</h1>");
+		
 		// Print all cookies with properties
 		w.append("<b>Cookies</b>");
 		for (Cookie cookie : req.getCookies()) {
